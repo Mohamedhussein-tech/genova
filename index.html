@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Genova – Don’t Call Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Black&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfd;--ink:#101114;--mute:#656a75;--acc:#e4372b;--line:#e3e5ea;--card:#eceef2;--bar:#101114;--barink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0f12;--ink:#f1f1f3;--mute:#9a9ea8;--acc:#ff5446;--line:#272a31;--card:#1a1c21;--bar:#f1f1f3;--barink:#0e0f12;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e0f12;--ink:#f1f1f3;--mute:#9a9ea8;--acc:#ff5446;--line:#272a31;--card:#1a1c21;--bar:#f1f1f3;--barink:#0e0f12;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Archivo,system-ui,sans-serif;min-height:100vh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.top{background:var(--bar);color:var(--barink);font-size:12px;text-align:center;padding:7px 12px}
+header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 5%}
+header nav{display:flex;gap:20px;font-size:14px}
+header a{color:inherit;text-decoration:none}
+.logo{font:400 28px "Permanent Marker","Archivo Black",cursive;letter-spacing:.01em}
+
+#bag{justify-self:end;font-size:14px;display:flex;gap:8px;align-items:center}
+#bag b{background:var(--acc);color:#fff;border-radius:99px;min-width:22px;padding:0 6px;text-align:center;font-size:12px;line-height:22px}
+.hero{text-align:center;padding:34px 5% 8px}
+h1{font:400 clamp(44px,12vw,104px)/1 "Permanent Marker","Archivo Black",cursive;transform:rotate(-2deg);margin-bottom:4px}
+h1 span{color:var(--acc)}
+.hero p{color:var(--mute);max-width:46ch;margin:14px auto 0}
+.hint{font-size:13px;color:var(--mute);margin:18px 0 26px}
+.wrap{overflow-x:auto;padding:0 3% 8px;-webkit-overflow-scrolling:touch}
+.rack{position:relative;min-width:680px;max-width:1100px;margin:0 auto;padding:10px 5% 0;display:flex;justify-content:space-between;gap:10px}
+.rod{position:absolute;left:0;right:0;top:0;height:10px;border-radius:6px;background:linear-gradient(#f4f5f7,#8b8f99 55%,#3b3e46);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.item{flex:1;max-width:150px;text-align:center;padding-top:6px;transition:transform .25s}
+.item:hover,.item:focus-visible{transform:scale(1.07)}
+.hang{display:block;position:relative;transform-origin:50% 0;animation:sway 1.8s ease-out both;animation-delay:var(--d)}
+.item:hover .hang,.item:focus-visible .hang{animation:swing .9s ease-in-out}
+.hang .clip{position:absolute;top:-4px;width:7px;height:16px;border-radius:2px;background:linear-gradient(90deg,#aeb2bb,#6d717b);z-index:2}
+.clip:nth-child(1){left:24%}.clip:nth-child(2){left:70%}
+.jn{display:block;width:100%;height:auto;filter:drop-shadow(0 12px 10px rgba(0,0,0,.2))}
+.lab{display:block;margin-top:12px;font-size:13px;line-height:1.3}
+.lab b{display:block;font-weight:600}.lab i{font-style:normal;color:var(--mute)}
+@keyframes sway{0%{transform:rotate(-7deg)}25%{transform:rotate(5deg)}50%{transform:rotate(-3deg)}75%{transform:rotate(1.5deg)}100%{transform:rotate(0)}}
+@keyframes swing{0%{transform:rotate(0)}30%{transform:rotate(-6deg)}65%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+#about{max-width:62ch;margin:70px auto 60px;padding:0 5%}
+#about h2{font:400 26px "Archivo Black","Arial Black",sans-serif;margin-bottom:10px}
+#about p{color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:22px 5%;font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(10,11,14,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:14px}
+.modal[hidden]{display:none}
+.sheet{position:relative;background:var(--bg);border-radius:20px;width:min(980px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:26px;animation:pop .3s ease-out}
+@keyframes pop{from{transform:translateY(24px) scale(.97);opacity:0}}
+.x{position:absolute;right:14px;top:12px;width:36px;height:36px;border-radius:50%;background:var(--card);font-size:20px;z-index:3}
+.stage{background:var(--card);border-radius:16px;padding:22px 0 14px;perspective:900px;display:flex;flex-direction:column;align-items:center}
+.spin{width:min(230px,62%);transform-style:preserve-3d}
+.spin.t{transition:transform .6s cubic-bezier(.5,0,.2,1)}
+.spin .in{display:block}.spin .in.b{transform:scaleX(-1)}
+.ctrl{width:78%;margin-top:14px}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.seg{display:flex;gap:6px;justify-content:center;margin-top:8px}
+.seg button,.sizes button{border-radius:99px;padding:6px 16px;font-size:13px;background:var(--bg);border:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--bar);color:var(--barink);border-color:var(--bar)}
+.info{display:flex;flex-direction:column;justify-content:center;padding-right:6px}
+.tag{font-size:12px;color:var(--acc);font-weight:600}
+.info h3{font:400 clamp(24px,4vw,34px)/1.05 "Archivo Black","Arial Black",sans-serif;margin:6px 0 4px;padding-right:30px}
+.pr{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px;color:var(--mute);font-size:14px}
+.pr b{font-size:22px;color:var(--ink)}
+.desc{margin:14px 0;color:var(--mute);font-size:14px}
+.sh{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:8px}
+.sizes{display:flex;gap:8px;flex-wrap:wrap}
+.sizes button{width:46px;height:46px;padding:0;border-radius:12px;font-weight:600}
+.sizes button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.add{margin-top:16px;width:100%;padding:16px;border-radius:14px;background:var(--bar);color:var(--barink);font-weight:600}
+.add:active{transform:scale(.98)}
+ul.f{list-style:none;padding:0;margin:16px 0 0;font-size:13px;color:var(--mute);display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+ul.f li:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--acc);margin-right:8px;vertical-align:middle}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--bar);color:var(--barink);padding:12px 18px;border-radius:99px;font-size:14px;transition:.3s;z-index:30;pointer-events:none;white-space:nowrap}
+#toast.on{transform:translate(-50%,0);opacity:1}
+@media (max-width:760px){.sheet{grid-template-columns:1fr;padding:16px;gap:16px}header nav{gap:12px}.logo{font-size:18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="fab" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient></defs></svg>
+<div class="top">Free shipping across Egypt on every order</div>
+<header>
+  <nav><a href="#rack">Collection</a><a href="#about">About</a></nav>
+  <div class="logo">Genova</div>
+  <button id="bag" aria-label="Bag">Bag <b id="cnt">0</b></button>
+</header>
+<section class="hero">
+  <h1><span>DON’T CALL ME</span></h1>
+  <p>Six washes of heavyweight denim, hung on one rail. Tap a pair to turn it around and pick your size.</p>
+  <div class="hint">Tap a pair to open it</div>
+</section>
+<div class="wrap" id="rack"><div class="rack" id="rk"><div class="rod"></div></div></div>
+<section id="about">
+  <h2>Denim, nothing else.</h2>
+  <p>Genova makes jeans in a few cuts and a few washes. Every pair has copper rivets, a heavy hand and room to break in. Placeholder copy: replace it with your own story.</p>
+</section>
+<footer><span>© 2026 Genova</span><span>Dispatch within 24 hours</span></footer>
+
+<div class="modal" id="m" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <button class="x" id="cl" aria-label="Close">×</button>
+    <div class="stage">
+      <div class="spin" id="spin"></div>
+      <div class="ctrl"><input type="range" id="rng" min="0" max="180" value="0" aria-label="Rotate pair"></div>
+      <div class="seg"><button id="bf" aria-pressed="true">Front</button><button id="bb" aria-pressed="false">Back</button></div>
+    </div>
+    <div class="info">
+      <div class="tag" id="tg"></div>
+      <h3 id="mt"></h3>
+      <div class="pr"><span id="fit"></span><b id="pp"></b></div>
+      <p class="desc">Heavyweight 13 oz cotton denim, garment washed and pre-shrunk. Copper rivets, double-stitched seams and a back yoke that sits flat.</p>
+      <div class="sh"><span>Waist size</span><span>Inches</span></div>
+      <div class="sizes" id="sz"></div>
+      <button class="add" id="add"></button>
+      <ul class="f"><li>13 oz cotton denim</li><li>Copper rivets</li><li>Pre-shrunk wash</li><li>Dispatch in 24 hours</li></ul>
+    </div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const P=[
+{n:'Raw Indigo',fit:'Straight fit',w:1,c:'#1f2d57',p:1450},
+{n:'Mid Wash',fit:'Slim fit',w:.9,c:'#4d72a8',p:1350},
+{n:'Stone Wash',fit:'Baggy fit',w:1.12,c:'#8fa9c7',p:1550},
+{n:'Washed Black',fit:'Straight fit',w:1,c:'#1d1e22',p:1450},
+{n:'Ecru',fit:'Slim fit',w:.9,c:'#e6dfcd',p:1400},
+{n:'Smoke Grey',fit:'Baggy fit',w:1.12,c:'#7a7f88',p:1500}];
+const B="M12 0H88L93 16L87 218H55L50 76L45 218H13L7 16Z";
+const S='fill="none" stroke="#d29a5e" stroke-width="1" stroke-dasharray="3 2" stroke-linecap="round"';
+const fmt=v=>v.toLocaleString('en-US')+' EGP';
+function svg(p,back){
+  let d=`<svg class="jn" viewBox="-6 -8 112 232" aria-hidden="true"><g transform="translate(50 0) scale(${p.w} 1) translate(-50 0)">
+  <path d="${B}" fill="${p.c}" stroke="rgba(0,0,0,.25)" stroke-width=".8"/><path d="${B}" fill="url(#fab)"/>
+  <path d="M12 0H88L90 14H10Z" fill="rgba(0,0,0,.16)"/>
+  <rect x="21" y="-3" width="4" height="17" rx="1" fill="rgba(0,0,0,.22)"/><rect x="48" y="-3" width="4" height="17" rx="1" fill="rgba(0,0,0,.22)"/><rect x="75" y="-3" width="4" height="17" rx="1" fill="rgba(0,0,0,.22)"/>
+  <path d="M10.5 211H46M54 211H89.5" ${S}/>`;
+  if(!back){d+=`<path d="M12 18Q29 22 31 45M88 18Q71 22 69 45" ${S}/><path d="M50 14V62Q50 72 43 72" ${S}/>
+  <circle cx="50" cy="7" r="2.4" fill="#c98a4b"/><circle cx="31" cy="45" r="1.6" fill="#c98a4b"/><circle cx="69" cy="45" r="1.6" fill="#c98a4b"/>`}
+  else{d+=`<path d="M12 16L50 28L88 16" ${S}/><path d="M50 28V76" ${S}/>
+  <path d="M19 26H44V47L31.5 54L19 47Z" ${S}/><path d="M56 26H81V47L68.5 54L56 47Z" ${S}/>
+  <circle cx="19" cy="26" r="1.5" fill="#c98a4b"/><circle cx="81" cy="26" r="1.5" fill="#c98a4b"/>
+  <rect x="64" y="2.5" width="16" height="8" rx="1" fill="rgba(210,154,94,.9)"/>`}
+  return d+'</g></svg>';
+}
+const rk=document.getElementById('rk');
+P.forEach((p,i)=>{
+  const b=document.createElement('button');b.className='item';b.dataset.i=i;
+  b.setAttribute('aria-label',p.n+', '+fmt(p.p));
+  b.innerHTML=`<span class="hang" style="--d:${i*.12}s"><span class="clip"></span><span class="clip"></span>${svg(p,false)}</span><span class="lab"><b>${p.n}</b><i>${fmt(p.p)}</i></span>`;
+  b.onclick=()=>openM(i,b);rk.appendChild(b);
+});
+const $=id=>document.getElementById(id),m=$('m'),spin=$('spin'),rng=$('rng');
+let cur=0,size='32',count=0,opener=null,side=false;
+function setSide(back){side=back;spin.innerHTML=`<span class="in${back?' b':''}">${svg(P[cur],back)}</span>`}
+function angle(a,anim){
+  spin.classList.toggle('t',!!anim);spin.style.transform=`rotateY(${a}deg)`;rng.value=a;
+  $('bf').setAttribute('aria-pressed',a<=90);$('bb').setAttribute('aria-pressed',a>90);
+  if(anim){setTimeout(()=>setSide(a>90),300)}else if((a>90)!==side)setSide(a>90);
+}
+function openM(i,el){
+  cur=i;opener=el;const p=P[i];size='32';
+  $('mt').textContent=p.n+' Jeans';$('tg').textContent='Genova, '+String(i+1).padStart(2,'0')+' of 06';
+  $('fit').textContent=p.fit;$('pp').textContent=fmt(p.p);$('add').textContent='Add to bag, '+fmt(p.p);
+  $('sz').innerHTML=['28','30','32','34','36'].map(s=>`<button aria-pressed="${s===size}">${s}</button>`).join('');
+  side=false;setSide(false);spin.classList.remove('t');spin.style.transform='rotateY(0deg)';rng.value=0;
+  $('bf').setAttribute('aria-pressed','true');$('bb').setAttribute('aria-pressed','false');
+  m.hidden=false;document.body.style.overflow='hidden';$('cl').focus();
+}
+function closeM(){m.hidden=true;document.body.style.overflow='';if(opener)opener.focus()}
+$('cl').onclick=closeM;m.onclick=e=>{if(e.target===m)closeM()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden)closeM()});
+rng.oninput=()=>angle(+rng.value,false);
+$('bf').onclick=()=>angle(0,true);$('bb').onclick=()=>angle(180,true);
+$('sz').onclick=e=>{const b=e.target.closest('button');if(!b)return;size=b.textContent;
+  [...$('sz').children].forEach(x=>x.setAttribute('aria-pressed',x===b))};
+let tt;
+$('add').onclick=()=>{count++;$('cnt').textContent=count;const t=$('toast');
+  t.textContent=P[cur].n+', size '+size+' added to bag';t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)};
+</script>
+</body>
+</html>
